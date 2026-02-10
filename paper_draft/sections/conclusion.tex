@@ -1,0 +1,9 @@
+\section{Conclusion}
+
+In this work, we have established a fundamental theoretical characterization of distributed high-utility pattern mining through the lens of utility function smoothness. Our main contribution proves that efficient convergence in $O(\frac{d_G}{\epsilon^2}\log|P|)$ rounds is both necessary and sufficient for utility functions satisfying $\alpha$-smoothness, providing a complete classification of tractable problem instances in the distributed setting.
+
+This result significantly improves upon the $O(|V|\cdot|P|)$ communication complexity achieved by \cite{ding2022prefixpruningbased} for distributed frequent pattern mining, while extending to the more general high-utility setting. Unlike previous approaches that relied on prefix-based pruning strategies, our framework leverages the geometric structure of the pattern space through the $\alpha$-smoothness property.
+
+Our theoretical analysis bridges an important gap in the literature between centralized and distributed pattern mining. While \cite{gabidullina2025data} established convergence guarantees for general distributed optimization, their results did not capture the specific challenges of pattern mining over temporal streams. Our characterization through utility smoothness provides concrete guidance for designing practical distributed mining algorithms with provable performance guarantees.
+
+Several interesting directions remain for future work. Extending our framework to handle dynamic communication graphs, developing adaptive variants that automatically tune the smoothness parameters, and characterizing the trade-off between communication complexity and approximation quality are all promising avenues for investigation. We believe the theoretical foundations established in this paper will serve as a stepping stone for addressing these challenges.

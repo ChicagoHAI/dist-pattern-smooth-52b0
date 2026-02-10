@@ -1,0 +1,15 @@
+\section{Discussion}
+
+Our theoretical and empirical results establish a fundamental connection between the topology of the communication network and the convergence properties of distributed pattern mining algorithms through the novel \alpha-smoothness framework. Several important implications emerge from this characterization:
+
+First, the necessity and sufficiency of \alpha-smoothness provides a complete mathematical characterization of utility functions amenable to efficient distributed computation. This extends previous work by \cite{gabidullina2025data} on decentralized optimization to the specific context of temporal pattern mining. The \alpha-smoothness property can be viewed as a form of Lipschitz continuity in pattern space, where the Hamming distance provides a natural metric structure.
+
+The diameter dependence in our convergence bound of $O(\frac{d_G}{\epsilon^2}\log|P|)$ reveals an inherent trade-off between communication topology and algorithmic efficiency. While \cite{ding2022prefixpruningbased} achieved faster convergence through prefix-based pruning, their approach required a complete communication graph. Our results show this requirement is fundamental - no distributed algorithm can overcome the information propagation barrier imposed by the network diameter.
+
+The empirical validation of \alpha ≈ 1.0 for our utility function is particularly interesting. This tight bound suggests our theoretical analysis is essentially optimal, as utility functions with \alpha > 1 would violate basic consistency requirements for pattern scoring. This aligns with the information-theoretic lower bounds developed in \cite{wang2020improved} for high-utility pattern mining.
+
+An important limitation of our framework is the assumption of static network topology. In practice, communication links may be dynamic, especially in sensor networks and distributed systems. Extending our analysis to time-varying graphs while maintaining the $O(\frac{d_G}{\epsilon^2}\log|P|)$ convergence guarantee remains an open challenge.
+
+The \alpha-smoothness property also suggests new directions for designing utility functions. Rather than focusing solely on pattern frequency or span as in traditional approaches \cite{pandey2017developing}, our framework indicates that gradual variation in utility scores may be essential for distributed mining. This could lead to more robust pattern evaluation metrics that naturally support distributed computation.
+
+Looking ahead, we believe the mathematical foundations established here will enable new classes of distributed mining algorithms that explicitly exploit network topology. A promising direction is adapting our framework to hierarchical network decompositions, potentially achieving the best of both worlds: local pattern discovery with global optimality guarantees.

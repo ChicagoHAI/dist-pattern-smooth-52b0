@@ -1,0 +1,50 @@
+\section{Methodology}
+
+Our analysis proceeds through several key stages to establish the theoretical foundations of distributed pattern mining over temporal streams. We first develop the necessary mathematical machinery before proving our main results.
+
+\subsection{Proof Strategy}
+
+Let $G=(V,E)$ be the network graph and $\mathcal{P}$ the pattern space. For any pattern $p \in \mathcal{P}$, we denote by $u_i(p)$ the local utility at node $i \in V$. The global utility is given by:
+
+\[U(p) = \frac{1}{|V|} \sum_{i \in V} u_i(p)\]
+
+We establish exponential convergence through the following steps:
+
+First, we analyze the local estimation error $\epsilon_i(t) = |\hat{u}_i(t) - u_i(p)|$ under the gossip-based protocol. Using the mixing properties of random walks on $G$, we prove that:
+
+\[\mathbb{E}[\epsilon_i(t)] \leq Ce^{-\lambda t}\]
+
+where $\lambda$ depends on the spectral gap of $G$ and $C$ is a problem-dependent constant.
+
+For $\alpha$-smooth utility functions satisfying:
+
+\[|u_i(p) - u_i(p')| \leq \alpha d(p,p')\]
+
+where $d(\cdot,\cdot)$ is a suitable metric on $\mathcal{P}$, we show that the pattern space can be efficiently pruned. Specifically, if $p^*$ is optimal, then any pattern $p$ with $d(p,p^*) \geq \frac{2U(p^*)}{\alpha}$ can be eliminated.
+
+\subsection{Validation Framework}
+
+To validate our theoretical results, we implement the distributed algorithm in a simulation environment supporting various network topologies. We generate synthetic temporal datasets with planted high-utility patterns where:
+
+\[u_i(p) = f(x_i(t), p) + \eta_i(t)\]
+
+Here $x_i(t)$ represents the local data stream at node $i$, $f$ is a known utility function, and $\eta_i(t)$ is zero-mean noise.
+
+We measure convergence rates across:
+\begin{itemize}
+\item Ring networks: $|E| = |V|$
+\item Grid networks: $|E| \approx 2|V|$
+\item Random graphs: $|E| = O(|V|\log|V|)$
+\end{itemize}
+
+For each topology, we compute the empirical convergence rate:
+
+\[\gamma_{emp} = \frac{1}{T}\log\left(\frac{\|\hat{U}(T) - U^*\|}{\|\hat{U}(0) - U^*\|}\right)\]
+
+where $\hat{U}(t)$ is the estimated utility at time $t$ and $U^*$ is the known optimal value.
+
+To verify the tightness of our bounds, we construct worst-case examples by solving:
+
+\[\max_{G \in \mathcal{G}} \min_{p \in \mathcal{P}} \frac{\|\hat{U}(T) - U^*\|}{\|\hat{U}(0) - U^*\|}\]
+
+subject to our assumptions on network connectivity and utility function smoothness.

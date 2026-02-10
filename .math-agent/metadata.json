@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-02-10T00:16:23.272Z",
+  "generator": "scibook-math-agent",
+  "version": "1.0.0",
+  "topic": "What are the necessary and sufficient conditions for utility functions to admit efficient distributed pattern mining algorithms?",
+  "title": "Convergence Rates for Distributed Pattern Mining Under Alpha-Smooth Utility Functions",
+  "tags": [
+    "distributed-computing",
+    "optimization",
+    "pattern-mining",
+    "algorithm-theory",
+    "convergence-analysis"
+  ]
+}

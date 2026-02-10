@@ -1,0 +1,27 @@
+\section{Limitations and Future Work}
+
+While our theoretical framework provides important insights into distributed pattern mining, several key limitations should be noted:
+
+\subsection{Assumption of Static Graph Structure}
+Our analysis assumes a fixed communication graph $G=(V,E)$ that remains unchanged throughout the computation process. In practical distributed systems, the network topology may be dynamic, with nodes joining or leaving the system and communication links failing intermittently. The convergence bound $|U_v(p) - U(p)| \leq \alpha e^{-\beta t}$ established in Lemma 1 may not hold under such dynamic conditions. Extending our results to time-varying graphs $G(t)$ remains an open challenge.
+
+\subsection{Restricted Utility Function Class}
+The characterization of admissible utility functions considers only those that satisfy the decomposability condition:
+\[
+U(p) = \sum_{v \in V} f_v(p, D_v)
+\]
+where $f_v$ are local utility functions. While this covers many practical cases, it excludes important non-decomposable utility measures that involve global properties of the pattern distribution. Future work could explore relaxations of this assumption.
+
+\subsection{Computational Complexity}
+Our theoretical bounds focus on communication complexity and convergence rates but do not fully address the computational complexity at individual nodes. For large pattern spaces $|P|$, the local computation at each node may become prohibitive, even when the communication overhead is manageable. Specifically, the per-round computation cost is $O(|P| \cdot d)$ where $d$ is the maximum node degree in $G$.
+
+\subsection{Synchronization Requirements}
+The current analysis assumes synchronized rounds of communication, which may be difficult to maintain in large-scale distributed systems. Extending our results to asynchronous settings, where nodes update at different rates and messages may experience arbitrary delays (bounded or unbounded), would significantly enhance practical applicability.
+
+Future work should address these limitations, particularly focusing on:
+\begin{itemize}
+\item Developing convergence guarantees for dynamic network topologies
+\item Extending the framework to broader classes of utility functions
+\item Designing efficient approximation algorithms for computationally intensive cases
+\item Analyzing convergence under asynchronous communication models
+\end{itemize}
